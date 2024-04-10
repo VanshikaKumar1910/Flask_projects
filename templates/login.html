@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Login Page{% endblock %}
+
+{% block styles %}
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    .login-form {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .login-form label {
+        font-weight: bold;
+    }
+
+    .login-form input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .login-form button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .login-form button:hover {
+        background-color: #0056b3;
+    }
+
+    .alert {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #17a2b8;
+        color: #fff;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+   {% with messages = get_flashed_messages() %}
+      {% if messages %}
+           {% for msg in messages %}
+                <div class="alert">{{msg}}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<form class="login-form" action="#" method="post">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="nm">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
